@@ -7,7 +7,7 @@
 Summary:	A clean C library for processing UTF-8 Unicode data
 Name:		utf8proc
 Version:	%{major}.%{minor}.%{mini}
-Release:	0
+Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		https://julialang.org/%{name}/
