@@ -1,12 +1,12 @@
 %define major	2
-%define minor	1
+%define minor	2
 %define mini	0
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname %{name} -d
 
 Summary:	A clean C library for processing UTF-8 Unicode data
 Name:		utf8proc
-Version:	%{major}.%{minor}.%{mini}
+Version:	2.2.0
 Release:	1
 Group:		System/Libraries
 License:	MIT
