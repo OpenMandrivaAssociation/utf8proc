@@ -1,17 +1,15 @@
 %define major	2
-%define minor	3
-%define mini	2
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname %{name} -d
 
 Summary:	A clean C library for processing UTF-8 Unicode data
 Name:		utf8proc
-Version:	2.5.0
+Version:	2.6.1
 Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		https://julialang.org/%{name}/
-Source0:	https://github.com/JuliaLang/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/JuliaStrings/utf8proc/archive/v%{version}.tar.gz
 
 BuildRequires:	cmake
 
@@ -62,9 +60,10 @@ This package provides the header files, link libraries, and documentation for
 building applications that use %{name}.
 
 %files -n %{devname}
+%doc LICENSE.md
 %{_includedir}/%{name}.h
 %{_libdir}/lib%{name}.so
-%doc LICENSE.md
+%{_libdir}/pkgconfig/libutf8proc.pc
 
 #---------------------------------------------------------------------------
 
@@ -72,25 +71,12 @@ building applications that use %{name}.
 %setup -q
 %autopatch -p1
 
-# Do not ues Makefile provides with the package
-rm  -f Makefile
-
 %build
-%cmake
-%make CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
-#% makeinstall_std -C build
-
-# library
-install -dm 0755 %{buildroot}%{_libdir}/
-install -pm 0755 build/lib%{name}.so.%{major}.%{minor}.%{mini} %{buildroot}%{_libdir}/
-ln -s lib%{name}.so.%{major}.%{minor}.%{mini} %{buildroot}%{_libdir}/lib%{name}.so.%{major}
-ln -s lib%{name}.so.%{major}.%{minor}.%{mini} %{buildroot}%{_libdir}/lib%{name}.so
-
-# header
-install -dm 0755 %{buildroot}%{_includedir}/
-install -pm 0755 %{name}.h %{buildroot}%{_includedir}/
+%makeinstall_std  prefix=%{_prefix} includedir=%{_includedir} libdir=%{_libdir}
+rm %{buildroot}%{_libdir}/libutf8proc.a
 
 %check
 %make CFLAGS="%{optflags}" test
