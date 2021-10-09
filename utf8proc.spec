@@ -1,6 +1,6 @@
-%define major	2
-%define libname	%mklibname %{name} %{major}
-%define devname	%mklibname %{name} -d
+%define major 2
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 
 Summary:	A clean C library for processing UTF-8 Unicode data
 Name:		utf8proc
@@ -9,7 +9,7 @@ Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		https://julialang.org/%{name}/
-Source0:	https://github.com/JuliaStrings/utf8proc/archive/v%{version}.tar.gz
+Source0:	https://github.com/JuliaStrings/utf8proc/archive/%{name}-%{version}.tar.gz
 
 BuildRequires:	cmake
 
@@ -68,8 +68,7 @@ building applications that use %{name}.
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %make_build CFLAGS="%{optflags}"
