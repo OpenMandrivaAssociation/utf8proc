@@ -5,7 +5,7 @@
 
 Summary:	A clean C library for processing UTF-8 Unicode data
 Name:		utf8proc
-Version:	2.9.0
+Version:	2.10.0
 Release:	1
 Group:		System/Libraries
 License:	MIT
