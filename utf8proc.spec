@@ -12,7 +12,7 @@ License:	MIT
 Url:		https://julialang.org/%{name}/
 Source0:	https://github.com/JuliaStrings/utf8proc/releases/download/v%{version}/utf8proc-%{version}.tar.gz
 
-BuildRequires:	cmake
+BuildRequires:	make
 
 %description
 utf8proc is a small, clean C library that provides Unicode normalization,
